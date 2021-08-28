@@ -76,6 +76,10 @@ var averageSalaryForYear: Double = 54_000.40
 // Цвет фигуры: - String или UIColor
 let figureColor: UIColor = .white                      // или let figureColor: String = "Белый"
 
+// MARK: РЕВЬЮ - Цвет фигуры:
+// Иногда удобнее создать в коде перечень констант, которые будут в дальнейшем использоваться по всему проекту, например перечень цветов, в этом случае если цвет простой можно сразу в имени указать какой именно это будет цвет:
+// let whiteColor: UIColor = .white
+
 // Длина в мм: - Int
 let lengthInMillimeters: Int = 20                      // или let lengthInMillimeters: Double = 20.35
 
@@ -91,6 +95,10 @@ let season: String = "Лето"
 //Пол человека: - String
 let man: String = "Мужчина"
 let woman: String = "Женщина"
+
+// MARK: РЕВЬЮ - Пол человека:
+// Или var isMale = true
+// Если будет false - значит пользователь женщина. Хорошей практикой является установка в начале названия переменной Bool приставку “is” - читая код, в котором явно не указан тип Вы сразу сможете определить что это булево значение.
 
 // Вывод результатов:
 print("#2 задание: \nВозраст: \(age) \nНаселение города: \(cityPopulation) \nЧисло звёзд: \(numberOfStars) \nКоличество байт: \(numberOfStars) \nСредняя зарплата за год: \(averageSalaryForYear) \nЦвет фигуры: \(figureColor) \nДлина в мм: \(lengthInMillimeters) \nДлина в см: \(lengthInCentimeters) \nФамилия: \(surname) \nВремя года: \(season) \nПол человека: \(man) или \(woman)\n")
