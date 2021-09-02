@@ -36,11 +36,46 @@ let fifthConstant = "#41fI?35&"
  let fourthConstant = "20"
  let fifthConstant = "20" */
 
+print("Первый вариант решения 2-ой части 1-го задания:")
+
 if let _ = Int(firstConstant), let _ = Int(secondConstant), let _ = Int(thirdConstant), let _ = Int(fourthConstant), let _ = Int(fifthConstant) {
     print(Int(firstConstant)! + Int(secondConstant)! + Int(thirdConstant)! + Int(fourthConstant)! + Int(fifthConstant)!, "\n")
 } else {
     print("Одну или несколько переменных, нельзя перевести в тип Int.\n")
 }
+
+//  Не совсем понял формулировку 2-ой части 1-го задания, поэтому реализовал второй вариант,
+//  который высчитывает сумму всех констант, которые можно перевести из Sting в Int.
+
+print("Второй вариант решения 2-ой части 1-го задания:")
+var sumOfStringConstant: Int = 0
+
+if let _ = Int(firstConstant) {
+    sumOfStringConstant += Int(firstConstant)!
+    print("- Первая константа может быть переведена в Int. Она равна - \(Int(firstConstant)!).")
+}
+
+if let _ = Int(secondConstant) {
+    sumOfStringConstant += Int(secondConstant)!
+    print("- Первая константа может быть переведена в Int. Она равна - \(Int(secondConstant)!).")
+}
+
+if let _ = Int(thirdConstant) {
+    sumOfStringConstant += Int(thirdConstant)!
+    print("- Первая константа может быть переведена в Int. Она равна - \(Int(thirdConstant)!).")
+}
+
+if let _ = Int(fourthConstant) {
+    sumOfStringConstant += Int(fourthConstant)!
+    print("- Первая константа может быть переведена в Int. Она равна - \(Int(fourthConstant)!).")
+}
+
+if let _ = Int(fifthConstant) {
+    sumOfStringConstant += Int(fifthConstant)!
+    print("- Первая константа может быть переведена в Int. Она равна - \(Int(fifthConstant)!).")
+}
+
+print("Сумма констант, которые можно перевести в Int = \(sumOfStringConstant).\n")
 
 
 
