@@ -15,6 +15,15 @@
     - Создайте массивы;
     - При помощи цикла и функции insert объедините массивы так, чтобы имена мальчиков находились в начале массива. */
 
+let boys: [String] = ["Вадим", "Максим"]
+let girls = Array(arrayLiteral: "Анна", "Анжела", "Валерия")
+var students = girls
+
+for item in boys {
+    students.insert(item, at: 0)
+}
+print("Задача #1.\nСтуденты:", students)
+
 
 
 
