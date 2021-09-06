@@ -30,16 +30,16 @@ let fourthConstant = "5g6h7j8k9l"
 let fifthConstant = "#41fI?35&"
 
 /* Для тестирования:
- let firstConstant = "20"
- let secondConstant = "20"
- let thirdConstant = "20"
- let fourthConstant = "20"
- let fifthConstant = "20" */
+   let firstConstant = "1"
+   let secondConstant = "5"
+   let thirdConstant = "6"
+   let fourthConstant = "8"
+   let fifthConstant = "10" */
 
 print("Первый вариант решения 2-ой части 1-го задания:")
 
-if let _ = Int(firstConstant), let _ = Int(secondConstant), let _ = Int(thirdConstant), let _ = Int(fourthConstant), let _ = Int(fifthConstant) {
-    print(Int(firstConstant)! + Int(secondConstant)! + Int(thirdConstant)! + Int(fourthConstant)! + Int(fifthConstant)!, "\n")
+if let newFirstConstant = Int(firstConstant), let newSecondConstant = Int(secondConstant), let newThirdConstant = Int(thirdConstant), let newFourthConstant = Int(fourthConstant), let newFifthConstant = Int(fifthConstant) {
+    print("Сумма констант:", newFirstConstant + newSecondConstant + newThirdConstant + newFourthConstant + newFifthConstant, "\n")
 } else {
     print("Одну или несколько переменных, нельзя перевести в тип Int.\n")
 }
@@ -50,29 +50,29 @@ if let _ = Int(firstConstant), let _ = Int(secondConstant), let _ = Int(thirdCon
 print("Второй вариант решения 2-ой части 1-го задания:")
 var sumOfStringConstant: Int = 0
 
-if let _ = Int(firstConstant) {
-    sumOfStringConstant += Int(firstConstant)!
-    print("- Первая константа может быть переведена в Int. Она равна - \(Int(firstConstant)!).")
+if let newFirstConstant = Int(firstConstant) {
+    sumOfStringConstant += newFirstConstant
+    print("- Первая константа может быть переведена в Int. Она равна - \(newFirstConstant).")
 }
 
-if let _ = Int(secondConstant) {
-    sumOfStringConstant += Int(secondConstant)!
-    print("- Первая константа может быть переведена в Int. Она равна - \(Int(secondConstant)!).")
+if let newSecondConstant = Int(secondConstant) {
+    sumOfStringConstant += newSecondConstant
+    print("- Первая константа может быть переведена в Int. Она равна - \(newSecondConstant).")
 }
 
-if let _ = Int(thirdConstant) {
-    sumOfStringConstant += Int(thirdConstant)!
-    print("- Первая константа может быть переведена в Int. Она равна - \(Int(thirdConstant)!).")
+if let newThirdConstant = Int(thirdConstant) {
+    sumOfStringConstant += newThirdConstant
+    print("- Первая константа может быть переведена в Int. Она равна - \(newThirdConstant).")
 }
 
-if let _ = Int(fourthConstant) {
-    sumOfStringConstant += Int(fourthConstant)!
-    print("- Первая константа может быть переведена в Int. Она равна - \(Int(fourthConstant)!).")
+if let newFourthConstant = Int(fourthConstant) {
+    sumOfStringConstant += newFourthConstant
+    print("- Первая константа может быть переведена в Int. Она равна - \(newFourthConstant).")
 }
 
-if let _ = Int(fifthConstant) {
-    sumOfStringConstant += Int(fifthConstant)!
-    print("- Первая константа может быть переведена в Int. Она равна - \(Int(fifthConstant)!).")
+if let newFifthConstant = Int(fifthConstant) {
+    sumOfStringConstant += newFifthConstant
+    print("- Первая константа может быть переведена в Int. Она равна - \(newFifthConstant).")
 }
 
 print("Сумма констант, которые можно перевести в Int = \(sumOfStringConstant).\n")
