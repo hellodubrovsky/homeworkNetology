@@ -67,3 +67,15 @@ print("Отсортированный массив по убыванию + ос�
 /*  Дан массив [1, 2, 3, 4, 7, 8, 15]. Программно найдите индексы двух чисел, которые в сумме дают 6, и распечатайте их в консоль.
     Проиницилизируйте переменные с индексами
     Используя цикл решите задачу (рассмотрите возможность использования цикла в цикле). */
+
+let someArray = [1, 2, 3, 4, 7, 8, 15]
+
+print("👉 Задача #4.\nДан массив:", someArray, "\n")
+
+for (indexArrayFromFirstCycle, itemArrayFromFirstCycle) in someArray.enumerated() {
+    for (indexArrayFromSecondCycle, itemArrayFromSecondCycle) in someArray.enumerated() {
+        if (indexArrayFromFirstCycle + indexArrayFromSecondCycle) == 6 && (indexArrayFromFirstCycle < indexArrayFromSecondCycle) {
+            print("Индексы в сумме (\(indexArrayFromFirstCycle) + \(indexArrayFromSecondCycle)) равны 6 у чисел \(itemArrayFromFirstCycle) и \(itemArrayFromSecondCycle).")
+        }
+    }
+}
