@@ -83,40 +83,21 @@ var chessman: Chessman = ["White bishop": ("A", 2), "White knight": ("B", 8), "B
 
 print("\n\n👉 ЗАДАНИЕ #3.\n")
 
-if let figure = chessman["White knight"] {
-    if let coordinate = figure {
-        print("Coordinate figure:", coordinate)
+func checkingForTheExistenceOfFigure(dictionaryChessmans: Chessman, figureInDictionary: String) {
+    if let figure = dictionaryChessmans[figureInDictionary] {
+        if let coordinate = figure {
+            print("Coordinate figure '\(figureInDictionary)':", coordinate)
+        } else {
+            print("The figure '\(figureInDictionary)' is killed.")
+        }
     } else {
-        print("The figure is killed.")
+        print("Figure '\(figureInDictionary)' not found.")
     }
-} else {
-    print("Figure not found.")
 }
 
-
-/* Для тестов:
- 
- if let figure = chessman["5555555"] {
-     if let coordinate = figure {
-         print("Coordinate figure:", coordinate)
-     } else {
-         print("The figure is killed.")
-     }
- } else {
-     print("Figure not found.")
- }
- 
- if let figure = chessman["Black pawn"] {
-     if let coordinate = figure {
-         print("Coordinate figure:", coordinate)
-     } else {
-         print("The figure is killed.")
-     }
- } else {
-     print("Figure not found.")
- }
-
-*/
+checkingForTheExistenceOfFigure(dictionaryChessmans: chessman, figureInDictionary: "White knight")      // Проверка существующей и не убитой фигуры
+checkingForTheExistenceOfFigure(dictionaryChessmans: chessman, figureInDictionary: "Black pawn")        // Проверка существующей, но убитой фигуры
+checkingForTheExistenceOfFigure(dictionaryChessmans: chessman, figureInDictionary: "Black")             // Проверка не существующей фигуры
 
 
 
@@ -129,13 +110,7 @@ print("\n\n👉 ЗАДАНИЕ #4.\n")
 
 if !chessman.isEmpty {
     for figure in chessman.keys {
-        if let existingFigure = chessman[figure] {
-            if let coordinate = existingFigure {
-                print("Coordinate figure '\(figure)':", coordinate)
-            } else {
-                print("The figure '\(figure)' is killed.")
-            }
-        }
+        checkingForTheExistenceOfFigure(dictionaryChessmans: chessman, figureInDictionary: figure)
     }
 } else {
     print("Chessman empty.")
