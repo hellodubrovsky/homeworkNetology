@@ -78,7 +78,47 @@ print("ElectronicDiaries: \(electronicDiaries)")
         // Действие
     } */
 
+typealias Chessman = [String: (alpha: Character, num: Int)?]
+var chessman: Chessman = ["White bishop": ("A", 2), "White knight": ("B", 8), "Black pawn": nil]
+
+print("\n\n👉 ЗАДАНИЕ #3.\n")
+
+if let figure = chessman["White knight"] {
+    if let coordinate = figure {
+        print("Coordinate figure:", coordinate)
+    } else {
+        print("The figure is killed.")
+    }
+} else {
+    print("Figure not found.")
+}
+
+
+/* Для тестов:
  
+ if let figure = chessman["5555555"] {
+     if let coordinate = figure {
+         print("Coordinate figure:", coordinate)
+     } else {
+         print("The figure is killed.")
+     }
+ } else {
+     print("Figure not found.")
+ }
+ 
+ if let figure = chessman["Black pawn"] {
+     if let coordinate = figure {
+         print("Coordinate figure:", coordinate)
+     } else {
+         print("The figure is killed.")
+     }
+ } else {
+     print("Figure not found.")
+ }
+
+*/
+
+
 
 
 
