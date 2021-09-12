@@ -125,3 +125,18 @@ if let figure = chessman["White knight"] {
  // MARK: - Задача 4.
 
  /* Вам необходимо доработать программу из Задачи 3 таким образом, чтобы она автоматически анализировала не одну переданную ей фигуру, а все фигуры, хранящиеся в переменной Chessmans. */
+print("\n\n👉 ЗАДАНИЕ #4.\n")
+
+if !chessman.isEmpty {
+    for figure in chessman.keys {
+        if let existingFigure = chessman[figure] {
+            if let coordinate = existingFigure {
+                print("Coordinate figure '\(figure)':", coordinate)
+            } else {
+                print("The figure '\(figure)' is killed.")
+            }
+        }
+    }
+} else {
+    print("Chessman empty.")
+}
