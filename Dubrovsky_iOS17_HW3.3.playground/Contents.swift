@@ -74,8 +74,27 @@ print("🔸 REMOVE (после попытки некорректных удал�
     - 4. Вызовите функцию и распечатайте полученный результат.
     - 5. Дополнительно (необязательно) входящих параметров может быть больше, например, для коэффициента пересчета баллов в денежные единицы.*/
 
+print("\n\n👉 Задача #2.")
+
+typealias UsersPointsDictionary = [Int: Double]
+typealias UsersCashDictionary = [Int: Int]
+
+var userPoints: UsersPointsDictionary = [1: 3400.00, 2: 230.0, 3: 674.0, 4: 5431.15, 5: 1000]
+print("🔹 Клиенты до конвертации с баллами: \(userPoints)")
+
+func conversion(dictionary: UsersPointsDictionary) -> UsersCashDictionary {
+    var userCash: UsersCashDictionary = [:]
+    for (elementID, elementPoint) in dictionary {
+        userCash[elementID] = Int(elementPoint) / 100 * 10
+    }
+    return userCash
+}
+
+var userCash = conversion(dictionary: userPoints)
+print("🔹 Клиенты, с конвертированными баллами в рубли: \(userCash)")
 
  
+
 
 
 // MARK: - Задача #3.
