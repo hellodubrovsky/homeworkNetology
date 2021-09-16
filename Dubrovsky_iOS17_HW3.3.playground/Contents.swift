@@ -33,8 +33,7 @@ adding(to: &someFlagColors, newItem: "Черный")
 adding(to: &someFlagColors, newItem: "Красный")
 print("🔹 ADD (массив после добавления):", someFlagColors)
 
-
-// Метод удаления элемента из словаря по индексу
+// Метод удаления элемента из словаря по индексу. (1 вариант)
 func removingElement(from array: inout [String], by index: Int) {
     if (!array.isEmpty) && (index >= 0) && (index < array.count) {          // Проверки: 1) Массив не пустой; 2) Индекс не отрицательный; 3) Элемент под таким индексом существует.
         print("   - Цвет: '\(array[index])' удален из словаря.")
@@ -48,14 +47,33 @@ func removingElement(from array: inout [String], by index: Int) {
     }
 }
 
-// Проверки метода удаления.
-print("\n🔸 REMOVE (изначальный массив):", someFlagColors)
+// Метод удаления элемента из словаря по значению. (2 вариант)
+func removing(element: String, from array: inout [String]) {
+    if !array.isEmpty {
+        if let removingElementIndex = array.firstIndex(of: element) {
+            array.remove(at: removingElementIndex)
+        } else {
+            print("   - Такого элемента '\(element)' не существует.")
+        }
+    } else {
+        print("   - Ваш массив является пустым.")
+    }
+}
+
+// Проверки метода удаления по индексу.
+print("\n🔸 1. REMOVE (изначальный массив):", someFlagColors)
 removingElement(from: &someFlagColors, by: 4)
 removingElement(from: &someFlagColors, by: 0)
-print("🔸 REMOVE (после удаления 2-х элементов):", someFlagColors)
+print("🔸 1. REMOVE (после удаления 2-х элементов):", someFlagColors)
 removingElement(from: &someFlagColors, by: -1)
 removingElement(from: &someFlagColors, by: 3)
-print("🔸 REMOVE (после попытки некорректных удалений):", someFlagColors)
+print("🔸 1. REMOVE (после попытки некорректных удалений):", someFlagColors)
+
+// Проверки метода удаления по значению.
+print("\n🔸 2. REMOVE (изначальный массив):", someFlagColors)
+removing(element: "Синий", from: &someFlagColors)
+removing(element: "Белый", from: &someFlagColors)
+print("\n🔸 2. REMOVE (изначальный массив):", someFlagColors)
  
  
  
