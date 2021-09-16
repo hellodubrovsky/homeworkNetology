@@ -1,6 +1,4 @@
 // MARK: Домашнее задание к 7-ой лекции.
-import Foundation
-import UIKit
 
 
 
