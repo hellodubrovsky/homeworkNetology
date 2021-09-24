@@ -31,6 +31,8 @@ func adding(to array: inout [String], newItem: String) {
 print("\n🔹 ADD (изначальный массив):", someFlagColors)
 adding(to: &someFlagColors, newItem: "Черный")
 adding(to: &someFlagColors, newItem: "Красный")
+adding(to: &someFlagColors, newItem: "Красный")
+adding(to: &someFlagColors, newItem: "Красный")
 print("🔹 ADD (массив после добавления):", someFlagColors)
 
 // Метод удаления элемента из словаря по индексу. (1 вариант)
@@ -47,17 +49,11 @@ func removingElement(from array: inout [String], by index: Int) {
     }
 }
 
-// Метод удаления элемента из словаря по значению. (2 вариант)
+// Метод удаления элемента(ов) из словаря по значению. (2 вариант)
 func removing(element: String, from array: inout [String]) {
-    if !array.isEmpty {
-        if let removingElementIndex = array.firstIndex(of: element) {
-            array.remove(at: removingElementIndex)
-        } else {
-            print("   - Такого элемента '\(element)' не существует.")
-        }
-    } else {
-        print("   - Ваш массив является пустым.")
-    }
+    guard !array.isEmpty else { print("   - Ваш массив является пустым."); return }
+    guard let removingElementIndex = array.firstIndex(of: element) else { print("   - Такого элемента '\(element)' не существует."); return }
+    array.remove(at: removingElementIndex)
 }
 
 // Проверки метода удаления по индексу.
@@ -71,8 +67,9 @@ print("🔸 1. REMOVE (после попытки некорректных уда
 
 // Проверки метода удаления по значению.
 print("\n🔸 2. REMOVE (изначальный массив):", someFlagColors)
-removing(element: "Синий", from: &someFlagColors)
-removing(element: "Белый", from: &someFlagColors)
+removing(element: "Черный", from: &someFlagColors)
+removing(element: "Красный", from: &someFlagColors)
+removing(element: "Черный", from: &someFlagColors)
 print("\n🔸 2. REMOVE (изначальный массив):", someFlagColors)
  
  
