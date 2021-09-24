@@ -31,6 +31,8 @@ func adding(to array: inout [String], newItem: String) {
 print("\n🔹 ADD (изначальный массив):", someFlagColors)
 adding(to: &someFlagColors, newItem: "Черный")
 adding(to: &someFlagColors, newItem: "Красный")
+adding(to: &someFlagColors, newItem: "Красный")
+adding(to: &someFlagColors, newItem: "Красный")
 print("🔹 ADD (массив после добавления):", someFlagColors)
 
 // Метод удаления элемента из словаря по индексу. (1 вариант)
@@ -47,17 +49,11 @@ func removingElement(from array: inout [String], by index: Int) {
     }
 }
 
-// Метод удаления элемента из словаря по значению. (2 вариант)
+// Метод удаления элемента(ов) из словаря по значению. (2 вариант)
 func removing(element: String, from array: inout [String]) {
-    if !array.isEmpty {
-        if let removingElementIndex = array.firstIndex(of: element) {
-            array.remove(at: removingElementIndex)
-        } else {
-            print("   - Такого элемента '\(element)' не существует.")
-        }
-    } else {
-        print("   - Ваш массив является пустым.")
-    }
+    guard !array.isEmpty else { print("   - Ваш массив является пустым."); return }
+    guard let removingElementIndex = array.firstIndex(of: element) else { print("   - Такого элемента '\(element)' не существует."); return }
+    array.remove(at: removingElementIndex)
 }
 
 // Проверки метода удаления по индексу.
@@ -71,8 +67,9 @@ print("🔸 1. REMOVE (после попытки некорректных уда
 
 // Проверки метода удаления по значению.
 print("\n🔸 2. REMOVE (изначальный массив):", someFlagColors)
-removing(element: "Синий", from: &someFlagColors)
-removing(element: "Белый", from: &someFlagColors)
+removing(element: "Черный", from: &someFlagColors)
+removing(element: "Красный", from: &someFlagColors)
+removing(element: "Черный", from: &someFlagColors)
 print("\n🔸 2. REMOVE (изначальный массив):", someFlagColors)
  
  
@@ -127,12 +124,12 @@ print("🔹 Клиенты, с конвертированными баллами
 print("\n\n👉 Задача #3.")
 var arrayOfNumbers = [70, 44, 97, 96, 99, 72, nil, 100, 40, 96, 1, 70, 77, 93, 25, 11, 89, 24, 50, 84, 81, 33, 95, 8, 22, 56, 24, 14, 4, 21, 14, 8, 59, 12, 81, 100, 8, 24, 4, 34, 17, 22, 54, 77, 87, nil, 1, 62, 33, 92, 66, 73, 51, 52, 25, 24, 20, 20, 13, 13, 51, 47, 8, 12, 53, nil, 13, 59, 98, 13, 13, 22, 10, 97, 88, 96, 24, 63, 12, 72, 47, 60, 51, 33, 35, 84, 79, 5, 89, 11, 46, 12, 13, nil, 22, 40, nil, 8, 14, 24]
 
-func calculateSumEvenOddValues(from array: [Int?]) -> (Int, Int) {
-    
+func calculateSumEvenOddValues1(from array: [Int?]) -> (Int, Int) {
+
     var uniqueNumbers: [Int] = []
     var sumOdd = 0
     var sumEven = 0
-    
+
     for numberOptional in array {
         if let numberInt = numberOptional {
             if !uniqueNumbers.contains(numberInt) {
@@ -140,7 +137,7 @@ func calculateSumEvenOddValues(from array: [Int?]) -> (Int, Int) {
             }
         }
     }
-    
+
     for i in 1...2 {
         switch i {
         case 1:
@@ -149,94 +146,46 @@ func calculateSumEvenOddValues(from array: [Int?]) -> (Int, Int) {
             sumEven = uniqueNumbers.filter{ $0 % 2 != 0 }.reduce(0, +)
         }
     }
-    
+
     print("Сумма уникальных четных чисел: \(sumOdd)")
     print("Сумма уникальных не четных чисел: \(sumEven)")
     return (sumOdd, sumEven)
 }
 
-// Проверка решения задачи №3.
-calculateSumEvenOddValues(from: arrayOfNumbers)
-
-
-
-
-
-// MARK: - Второй вариант решение задания #3.
-// Это вариант, с помощью которого я решил изначально, после чего пришел к первому варианту решение.
-
-/* func calculateSumEvenOddValues1(from array: [Int?]) -> (Int, Int) {
-    
-    var uniqueNumbers: [Int] = []
-    
-    for numberOptional in array {
-        if let numberInt = numberOptional {
-            if !uniqueNumbers.contains(numberInt) {
-                uniqueNumbers.append(numberInt)
-            }
+func calculateSumEvenOddValues2(from array: [Int?]) -> (Int, Int) {
+    // создаем кортеж в который будет записывать суммы
+    var tuple: (even: Int, odd: Int) = (0, 0)
+    // исключаем сразу все повторения переводя массив в множество
+    let set = Set(array)
+  
+    // обходим множество
+    set.forEach { number in
+        // делаем проверку на nil
+        guard let number = number else { return }
+        // если после деления на 2 остаток равен нулю
+        if number % 2 == 0 {
+            // прибавляем отобранные значения к соответствующему значению кортежа
+            tuple.even += number
+        } else {
+            tuple.odd += number
         }
     }
-    
-    var odd: [Int] = []
-    var even: [Int] = []
-    
-    var q: [Int] = []
-    var r: [Int] = []
-    
-    let evenArray1 = uniqueNumbers.filter{$0 % 2 != 0}
-    for i in evenArray1 {
-        for j in evenArray1 {
-            if i != j {
-                if !q.contains(i) && !q.contains(j) {
-                    if i % 2 != 0 && j % 2 != 0 {
-                        q.append(i)
-                        q.append(j)
-                        even.append(i + j)
-                    }
-                }
-            }
-            if !q.contains(evenArray1[evenArray1.endIndex - 1]) && evenArray1[evenArray1.endIndex - 1] % 2 == 0 {
-                print(evenArray1[evenArray1.endIndex - 1])
-                q.append(evenArray1[evenArray1.endIndex - 1])
-                even.append(evenArray1[evenArray1.endIndex - 1])
-            }
-        }
-    }
-    
-    let oddArray1 = uniqueNumbers.filter{$0 % 2 == 0}
-    for i in oddArray1 {
-        for j in oddArray1 {
-            if i != j {
-                if !r.contains(i) && !r.contains(j) {
-                    if i % 2 == 0 && j % 2 == 0 {
-                        r.append(i)
-                        r.append(j)
-                        odd.append(i + j)
-                    }
-                }
-                if !r.contains(oddArray1[oddArray1.endIndex - 1]) && oddArray1[oddArray1.endIndex - 1] % 2 == 0 {
-                    r.append(oddArray1[oddArray1.endIndex - 1])
-                    odd.append(oddArray1[oddArray1.endIndex - 1])
-                }
-            }
-        }
-    }
-    
-    var k: Int = 0
-    var g: Int = 0
-    
-    for i in even {
-        k += i
-    }
-    
-    for i in odd {
-        g += i
-    }
-    
-    print("Сумма четных: \(g)")
-    print("Сумма не четных: \(k)")
-
-    return (g, k)
+    // возвращаем результат
+    return tuple
 }
 
-calculateSumEvenOddValues1(from: arrayOfNumbers) */
+func calculateSumEvenOddValues3(from array: [Int?]) -> (Int, Int) {
+    var tuple: (even: Int, odd: Int) = (0, 0)
+    let set = Set(array).compactMap {$0}
+ 
+    set.forEach { value in
+        value.isMultiple(of: 2) ? (tuple.even += value) : (tuple.odd += value)
+    }
+    return tuple
+}
+
+
+// Проверка решения задачи №3.
+calculateSumEvenOddValues1(from: arrayOfNumbers)
+calculateSumEvenOddValues2(from: arrayOfNumbers)
+calculateSumEvenOddValues3(from: arrayOfNumbers)
