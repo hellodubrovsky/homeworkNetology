@@ -1,3 +1,3 @@
 # homeworkNetology
-Тема: Основы Swift.    
-👋 Swift programming language homework.
+🧮 Тема: Основы Swift.    
+👨‍💻 Swift programming language homework. 
